@@ -1,0 +1,20 @@
+apiVersion: skaffold/v4beta9
+kind: Config
+manifests:
+  rawYaml:
+    - "./02_infra/01_k8s/*"
+build:
+  googleCloudBuild:
+    projectId: ticketing-dev-415620
+    region: us-central1-c
+
+  artifacts:
+    # Cloud Build 创建的 image name 会按照以下规则创建
+    - image: gcr.io/ticketing-dev-415620/auth
+      context: 01_auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
