@@ -26,9 +26,9 @@ router.post('/api/users/signin',
         if (!existingUser) {
             throw new BadRequestError("Invalid credentials")
         }
-        const compare = await Password.compare(existingUser.password, password)
-        if (!compare) {
-            throw new BadRequestError("Password invalid")
+        const passwordsMatch = await Password.compare(existingUser.password, password)
+        if (!passwordsMatch) {
+            throw new BadRequestError("Invalid credentials")
         }
 
         const userJwt = jwt.sign({
@@ -43,7 +43,7 @@ router.post('/api/users/signin',
         }
 
 
-        res.send("Login Seccessfully")
+        res.status(200).send(existingUser)
     })
 
 export { router as signinRouter }

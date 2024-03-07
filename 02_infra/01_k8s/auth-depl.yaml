@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: frankjia/auth:latest
+          image: frankjia/auth
           env:
             - name: JWT_KEY
               valueFrom:
