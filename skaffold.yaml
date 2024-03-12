@@ -23,3 +23,12 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
+    - image: frankjia/tickets
+      context: 05_tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
+        
