@@ -39,7 +39,7 @@ const Signin =  () => {
             {
                 errors
             }
-            <button className="btn btn-primar"></button>
+            <button className="btn btn-primary">Sign In</button>
         </form>
     )
 }
