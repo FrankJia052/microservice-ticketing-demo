@@ -41,9 +41,10 @@ afterAll( async () => {
 })
 
 global.signin = () => {
+    // 把id变成随机数，方便测试不同用户
     // Build a JWT payload. {id, email}
     const payload = {
-        id: "test001",
+        id: new mongoose.Types.ObjectId().toHexString(),
         email: "test@test.com"
     }
 

@@ -34,7 +34,7 @@ const ticketSchema = new mongoose.Schema({
         transform(doc, ret) {
             ret.id = ret._id;
             delete ret._id;
-            delete ret._v;
+            delete ret.__v;
         }
     }
 })
