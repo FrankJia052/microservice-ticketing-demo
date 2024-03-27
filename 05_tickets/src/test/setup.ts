@@ -6,6 +6,9 @@ declare global {
     var signin: () => string[];
 }
 
+// mock nats-wrapper in each test
+jest.mock("../nats-wrapper")
+
 // 存放内存数据库的变量
 let mongo: any;
 
@@ -23,6 +26,9 @@ beforeAll( async() => {
 
 // 这里的逻辑，会在每次test执行之前运行
 beforeEach( async () => {
+    // 每次要清除所有mocks记录
+    jest.clearAllMocks();
+    
     // 重置测试的数据库数据
     const collections = await mongoose.connection.db.collections()
 

@@ -2,7 +2,6 @@ import request from "supertest"
 import { app } from "../../app"
 import mongoose from "mongoose";
 
-
 it("returns a 404 if the ticket is not found", async() => {
     // 这里测试，正常来讲普通的string作为id，会有新的mongoose错误，不会被捕获
     // 但是我测试，似乎这种错误被修复了
